@@ -43,7 +43,6 @@ public class TestMain {
 			System.out.println(ar.get(0).getUsername()+"\t"+ar.get(0).getPassword()+"\t"+ar.get(0).getName()+"\t"+ar.get(0).getEmail()+"\t"+ar.get(0).getPhone());
 			check = !check;
 			
-
 			
 		} //catch (IndexOutOfBoundsException ioobe) {
 			//System.out.println("없는 ID 입니다");
@@ -61,8 +60,8 @@ public class TestMain {
 		
 		/*
 		bankbookDTO = new BankBookDTO();
-		bankbookDTO.setBookname("내통장2");
-		bankbookDTO.setBookrate(3.5);
+		bankbookDTO.setBookname("내통장1");
+		bankbookDTO.setBookrate(1.5);
 		
 		
 		try {
