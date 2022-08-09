@@ -12,18 +12,23 @@ import com.iu.start.bankmembers.BankmembersDTO;
 
 public class TestMain {
 
-	public static void main(String[] args) {
-		/*
+	public static void main(String[] args) throws Exception {
+		
 		BankmembersDAO bankmembersDAO = new BankmembersDAO();
 		BankmembersDTO bankmembersDTO = new BankmembersDTO();
-		bankmembersDTO.setUsername("USERNAME1");
+		bankmembersDTO.setUsername("USERNAME12");
 		bankmembersDTO.setPassword("PW1");
 		bankmembersDTO.setName("NAME1");
 		bankmembersDTO.setEmail("EMAIL1");
 		bankmembersDTO.setPhone("PHONE1");
-		ArrayList<BankmembersDTO> ar = new ArrayList<BankmembersDTO>();
-		boolean check = true;
 		
+		
+		int result = bankmembersDAO.setJoin(bankmembersDTO);
+		System.out.println(result);
+		
+		ArrayList<BankmembersDTO> ar = new ArrayList<BankmembersDTO>();
+		//boolean check = true;
+		/*
 		while(check) {
 		try {
 			//int result = bankmembersDAO.setJoin(bankmembersDTO);
