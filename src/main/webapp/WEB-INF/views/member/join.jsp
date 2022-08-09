@@ -11,6 +11,7 @@
 	
 	<form action="join" method="post">
 	<div>
+	
         ID <input type="text" name="username"> <br>
         비밀번호 <input type="password" name="password"> <br>
         이름 <input type="text" name="name"> <br>

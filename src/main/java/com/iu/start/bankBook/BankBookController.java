@@ -38,6 +38,7 @@ public class BankBookController {
 		System.out.println("add 실행 post");
 		BankBookDAO bankbookDAO = new BankBookDAO();
 		int check = bankbookDAO.setBankBook(bDTO);
+		System.out.println(check);
 		return "bankbook/add";
 	}
 	
