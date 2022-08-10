@@ -60,6 +60,8 @@ public class BankmembersDAO implements MembersDAO{
 		
 		DBConnector.getClose(rs, st, con);
 		
+
+		
 		return ar;
 		
 		
