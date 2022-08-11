@@ -49,7 +49,7 @@ ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>)request.getAttribute("list")
 	
 	</table>
 	
-	
+	<a href="./add">상품등록</a>
 	
 </body>
 </html>

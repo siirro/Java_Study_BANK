@@ -20,6 +20,8 @@ BankBookDTO bankBookDTO = (BankBookDTO)request.getAttribute("detail");
 	조인은 절대경로
 	<a href="/member/join">Join</a>
 	
+	<a href="./list">리스트보기</a>
+	
 	<% if(bankBookDTO != null){ %>
 
 	<table border="1">
