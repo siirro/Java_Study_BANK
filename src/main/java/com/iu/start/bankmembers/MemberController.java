@@ -33,9 +33,9 @@ public class MemberController {
 		
 		
 		BankmembersDAO bDAO = new BankmembersDAO();
-		//ArrayList<BankmembersDTO> ar = bDAO.getSearchByID(username);
+		ArrayList<BankmembersDTO> ar = bDAO.getSearchByID(search);
 		
-		//db가없어서임시로..지우세용
+		/*/db가없어서임시로..지우세용
 		ArrayList<BankmembersDTO> ar = new ArrayList<BankmembersDTO>();
 		BankmembersDTO bankmembersDTO = new BankmembersDTO();
 		bankmembersDTO.setUsername("inhome");
@@ -44,7 +44,7 @@ public class MemberController {
 		bankmembersDTO.setEmail("mailhome");
 		bankmembersDTO.setPhone("phonehome");
 		ar.add(bankmembersDTO);
-		//
+		*/
 		
 		model.addAttribute("list", ar);
 		
@@ -68,10 +68,18 @@ public class MemberController {
 	}
 		
 	@RequestMapping(value ="login", method = RequestMethod.POST)
-	public String login(BankmembersDTO bankmembersDTO) {
+	public String login(BankmembersDTO bankmembersDTO, Model model) throws Exception {
 		System.out.println("login 실행");
+		BankmembersDAO bankmembersDAO = new BankmembersDAO();
+		bankmembersDTO = bankmembersDAO.getLogin(bankmembersDTO);
+		System.out.println(bankmembersDTO);
+		
+		model.addAttribute("member", bankmembersDAO);
+		
+		
 		//"redirect:다시접속할URL주소(절대경로,상대경로)
-		return "redirect:../";
+		//return "redirect:../";
+		return "home";
 		
 	}
 	// join /member/join - Get

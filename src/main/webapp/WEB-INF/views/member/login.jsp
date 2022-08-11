@@ -11,8 +11,8 @@
 	
 	<div>
 		<form action="./login" method="post">
-			ID <input type="text" name="id"> <br>
-		    PW <input type="password" name="pw">
+			ID <input type="text" name="username"> <br>
+		    PW <input type="password" name="password">
 		    <input type="submit" value="로그인">
 		    <input type="reset">
 		    이미지 절대경로

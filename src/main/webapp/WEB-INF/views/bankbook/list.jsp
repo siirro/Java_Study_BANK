@@ -3,15 +3,16 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+
+<%-- 
 <%
 //BankBookDAO bankbookDAO = new BankBookDAO();
 //ArrayList<BankBookDTO> ar = bankbookDAO.getList();
-
 ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>)request.getAttribute("list");
-
 %>
+--%>
     
 <!DOCTYPE html>
 <html>
@@ -31,17 +32,30 @@ ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>)request.getAttribute("list")
 	<table border="1">
 		<thead>
 			<tr>
-				<th>Name</th><th>Rate</th><th></th>
+				<th>Name</th><th>Rate</th><th>sale</th>
 			</tr>
 		</thead>
+		
 		<tbody>
+		
+		<c:forEach items="${requestScope.list}" var="dto">
+			<tr>
+				<td><a href="./detail?booknum=${pageScope.dto.booknum}">${pageScope.dto.bookname}</a></td>
+				<td>${pageScope.dto.bookrate}</td>
+				<td>${pageScope.dto.booksale}</td>
+			</tr>
+		
+		</c:forEach>
+			
+			<%-- 
 			<% for(BankBookDTO bankBookDTO :ar){ %>
 				<tr>
 					<td><a href="./detail?bookNum=<%= bankBookDTO.getBooknum()%>"> <%= bankBookDTO.getBookname() %></a></td>
+					
 					<td><%= bankBookDTO.getBookrate() %></td>
 				</tr>
 			<%} %>
-			
+			--%>
 		
 		
 		</tbody>

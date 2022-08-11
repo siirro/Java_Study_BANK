@@ -37,7 +37,8 @@ public class BankBookDAO implements BookDAO{
 		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
 		BankBookDTO bankbookDTO = null;
 		Connection con = DBConnector.getConnection();
-		String sql = "SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC";
+		String sql = "SELECT * FROM BANKBOOK";
+		//String sql = "SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		ResultSet rs = st.executeQuery();
@@ -97,9 +98,10 @@ public class BankBookDAO implements BookDAO{
 		Connection con = DBConnector.getConnection();
 		String sql = "SELECT * FROM BANKBOOK WHERE BOOKNUM = ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		Scanner sc = new Scanner(System.in);
-		System.out.println("찾을 북넘을 입력해라");
-		st.setLong(1, sc.nextLong());
+		//BankBookDTO bankbookDTO = null;
+		
+		st.setLong(1, bankbookDTO.getBooknum());
+		
 		ResultSet rs = st.executeQuery();
 
 		
@@ -113,6 +115,38 @@ public class BankBookDAO implements BookDAO{
 		
 		DBConnector.getClose(rs, st, con);
 		return bankbookDTO;
+	}
+
+	@Override
+	public int setUpdate(BankBookDTO bankBookDTO) throws Exception {
+		Connection con = DBConnector.getConnection();
+		String sql = "update bankbook set bookname=?, bookrate=? where booknum=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, bankBookDTO.getBookname());
+		st.setDouble(2, bankBookDTO.getBookrate());
+		st.setLong(3, bankBookDTO.getBooknum());
+		
+		
+		int result = st.executeUpdate();
+		
+		return result; 
+		
+	}
+
+	@Override
+	public int setDelete(BankBookDTO bankBookDTO) throws Exception {
+		Connection con = DBConnector.getConnection();
+		String sql = "DELETE BANKBOOK WHERE BOOKNUM=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setLong(1, bankBookDTO.getBooknum());
+		
+		
+		
+		int result = st.executeUpdate();
+		
+		return result; 
 	}
 
 }

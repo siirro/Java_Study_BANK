@@ -1,10 +1,8 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.iu.start.bankmembers.BankmembersDTO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <% 
-ArrayList<BankmembersDTO> ar = (ArrayList<BankmembersDTO>)request.getAttribute("list");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +10,11 @@ ArrayList<BankmembersDTO> ar = (ArrayList<BankmembersDTO>)request.getAttribute("
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Search Result</h1>
+	<h1>Search Result</h1>	
 
+	
+	
+	
 	<table border="1">
 		<thead>
 			<tr>
@@ -26,6 +27,22 @@ ArrayList<BankmembersDTO> ar = (ArrayList<BankmembersDTO>)request.getAttribute("
 		</thead>
 		<tbody>
 			
+		<c:forEach begin="0" end="10" var="i">
+		<h3>${pageScope.i}</h3>
+		</c:forEach>
+
+		<c:forEach items="${requestScope.list}" var="dto">
+			<tr>
+				<td>${pageScope.dto.username}</td>
+				<td>${pageScope.dto.password}</td>
+				<td>${pageScope.dto.name}</td>
+				<td>${pageScope.dto.email}</td>
+				<td>${pageScope.dto.phone}</td>
+			</tr>
+		</c:forEach>
+	
+			
+			<%-- 
 				<% for(BankmembersDTO bankmembersDTO:ar) { %>
 				<tr>
 				
@@ -37,10 +54,12 @@ ArrayList<BankmembersDTO> ar = (ArrayList<BankmembersDTO>)request.getAttribute("
 					
 				</tr>
 				<% } %>
+				--%>
 
 		</tbody>
 	
 	
 	</table>
+	 
 </body>
 </html>

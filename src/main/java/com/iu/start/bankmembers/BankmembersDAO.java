@@ -9,6 +9,33 @@ import java.util.Scanner;
 import com.iu.start.util.DBConnector;
 
 public class BankmembersDAO implements MembersDAO{
+	
+	public BankmembersDTO getLogin(BankmembersDTO bankmembersDTO) throws Exception{
+		Connection con = DBConnector.getConnection();
+		String sql="select username, name from bankmembers where username=? and password=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, bankmembersDTO.getUsername());
+		st.setString(2, bankmembersDTO.getPassword());
+		
+		ResultSet rs = st.executeQuery();
+		
+		if(rs.next()) {
+			bankmembersDTO = new BankmembersDTO();
+			bankmembersDTO.setUsername(rs.getString("username"));
+			bankmembersDTO.setName(rs.getString("name"));
+			//System.out.println("로그인성공");
+		} else {
+			bankmembersDTO = null;
+			//또는 return null;
+			//System.out.println("로그인실패");
+		}
+		
+		DBConnector.getClose(rs, st, con);
+		return bankmembersDTO;
+		
+		
+	}
 
 	public int setJoin(BankmembersDTO bankMembersDTO) throws Exception {
 		
