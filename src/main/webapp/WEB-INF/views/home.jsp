@@ -17,7 +17,7 @@
 <a href="./member/join">Join</a>
 <a href="./bankbook/list">List</a>
 <a href="./bankbook/detail">Detail</a>
-<a href="./bankbook/add">add</a>
+<a href="./bankbook/add">Add</a>
 <a href="./member/search">search</a>
 
 
