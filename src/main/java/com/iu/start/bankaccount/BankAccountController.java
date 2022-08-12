@@ -21,8 +21,6 @@ public class BankAccountController {
 	public String add(BankAccountDTO bankAccountDTO, HttpSession session) throws Exception {
 		System.out.println("BankAccount Add");	
 		
-		
-		
 		BankmembersDTO bankMembersDTO = (BankmembersDTO)session.getAttribute("member");
 		System.out.println(bankAccountDTO.getBookNum());
 		bankAccountDTO.setUserName(bankMembersDTO.getUsername());
