@@ -27,9 +27,10 @@
 		</thead>
 		<tbody>
 			
-		<c:forEach begin="0" end="10" var="i">
+		<%-- <c:forEach begin="0" end="10" var="i">
 		<h3>${pageScope.i}</h3>
 		</c:forEach>
+			--%>
 
 		<c:forEach items="${requestScope.list}" var="dto">
 			<tr>

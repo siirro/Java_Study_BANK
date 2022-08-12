@@ -9,7 +9,7 @@
 <body>
 	<h1>Join Page</h1>
 	
-	<form action="join" method="post">
+	<form action="join.iu" method="post">
 	<div>
 	
         ID <input type="text" name="username"> <br>

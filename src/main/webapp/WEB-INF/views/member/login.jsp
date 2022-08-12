@@ -10,9 +10,9 @@
 	<h1>Login Page</h1>
 	
 	<div>
-		<form action="./login" method="post">
-			ID <input type="text" name="username"> <br>
-		    PW <input type="password" name="password">
+		<form action="./login.iu" method="post">
+			ID <input type="text" value="NAME1" name="username"> <br>
+		    PW <input type="password" value="PW1" name="password">
 		    <input type="submit" value="로그인">
 		    <input type="reset">
 		    이미지 절대경로

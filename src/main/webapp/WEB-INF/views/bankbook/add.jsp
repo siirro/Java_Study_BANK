@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>상품 등록 페이지</h1>
-		<form action="./add" method="post">
+		<form action="./add.iu" method="post">
 			<div>
 				통장명 <input type="text" name="bookname">
 			</div>

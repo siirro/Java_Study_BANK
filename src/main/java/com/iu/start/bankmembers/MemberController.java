@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,36 +62,46 @@ public class MemberController {
 	// @이게 어노테이션이다. : 설명 + 실행
 	
 	// /member/login 절대경로로 써야함
-	@RequestMapping(value ="login", method = RequestMethod.GET)
+	@RequestMapping(value ="login.iu", method = RequestMethod.GET)
 	public String login() {
 		System.out.println("login 실행");
 		return "member/login";
 	}
 		
-	@RequestMapping(value ="login", method = RequestMethod.POST)
-	public String login(BankmembersDTO bankmembersDTO, Model model) throws Exception {
+	@RequestMapping(value ="login.iu", method = RequestMethod.POST)
+	public String login(HttpServletRequest request, BankmembersDTO bankmembersDTO) throws Exception {
 		System.out.println("login 실행");
 		BankmembersDAO bankmembersDAO = new BankmembersDAO();
 		bankmembersDTO = bankmembersDAO.getLogin(bankmembersDTO);
 		System.out.println(bankmembersDTO);
+		HttpSession session = request.getSession();
+		session.setAttribute("member", bankmembersDTO);
 		
-		model.addAttribute("member", bankmembersDAO);
+		//model.addAttribute("member", bankmembersDAO);
 		
 		
 		//"redirect:다시접속할URL주소(절대경로,상대경로)
-		//return "redirect:../";
-		return "home";
+		return "redirect:../";
+		//return "home";
 		
 	}
+	
+	@RequestMapping(value="logout.iu", method = RequestMethod.GET)
+	public String logout(HttpSession session)throws Exception{
+		session.invalidate();
+		
+		return "redirect:../";
+	}
+	
 	// join /member/join - Get
-	@RequestMapping(value ="join", method = RequestMethod.GET)
+	@RequestMapping(value ="join.iu", method = RequestMethod.GET)
 	public void join() {
 		System.out.println("Join Get 실행");
 		//return "member/join";
 	}
 	
 	// join - Post
-	@RequestMapping(value ="join", method = RequestMethod.POST)
+	@RequestMapping(value ="join.iu", method = RequestMethod.POST)
 	//public String join(HttpServletRequest request) throws Exception {
 	public String join(BankmembersDTO bankmembersDTO) throws Exception {
 		System.out.println("Join Post 실행");
@@ -115,7 +126,7 @@ public class MemberController {
 		//System.out.println(check==1);
 		
 		
-		return "redirect:./login";
+		return "redirect:./login.iu";
 	}
 		
 	

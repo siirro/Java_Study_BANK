@@ -24,7 +24,7 @@ ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>)request.getAttribute("list")
 	<h1>BankBook List</h1>
 	<!-- /bankbook/list 페이지 인덱스에 에태그걸어서 저게나와야함 -->
 	
-	<a href="./detail">Detail</a>
+	<!--  <a href="./detail.iu">Detail</a> -->
 	<!-- /bankbook/detail jsp:detail.jsp로 이동-->
 	<!-- link 주소는 상대경로 작성 -->
 	
@@ -40,7 +40,7 @@ ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>)request.getAttribute("list")
 		
 		<c:forEach items="${requestScope.list}" var="dto">
 			<tr>
-				<td><a href="./detail?booknum=${pageScope.dto.booknum}">${pageScope.dto.bookname}</a></td>
+				<td><a href="./detail.iu?booknum=${pageScope.dto.booknum}">${pageScope.dto.bookname}</a></td>
 				<td>${pageScope.dto.bookrate}</td>
 				<td>${pageScope.dto.booksale}</td>
 			</tr>
@@ -63,7 +63,7 @@ ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>)request.getAttribute("list")
 	
 	</table>
 	
-	<a href="./add">상품등록</a>
+	<a href="./add.iu">상품등록</a>
 	
 </body>
 </html>
