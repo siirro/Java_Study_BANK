@@ -34,7 +34,7 @@
 <%-- <a href="./bankbook/detail">Detail</a> 
 <a href="./bankbook/add.iu">Add</a> --%>
 
-
+<a href="./board/list.iu">글목록</a>
 
 </body>
 </html>
