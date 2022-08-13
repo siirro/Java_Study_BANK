@@ -1,6 +1,9 @@
 package com.iu.start.board;
 
+import java.net.http.HttpRequest;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,14 +20,6 @@ public class BoardController {
 		this.boardDAO = new BoardDAO();
 	}
 	
-	
-	/*1. 글목록보기(list)
-	URL       : /board/list.확장자    -- 확장자는 개발자 마음대로
-	Method    : GET
-	JSP       : /WEB-INF/views/board/list.jsp
-	Parameter : 없음
-	*/
-	
 	@RequestMapping(value="list.iu", method=RequestMethod.GET)
 	public String list(Model model)throws Exception{
 		
@@ -33,6 +28,50 @@ public class BoardController {
 		model.addAttribute("list", ar);
 		return "./board/list";
 		
+	}
+	
+	@RequestMapping(value="detail.iu", method=RequestMethod.GET)
+	public String detail(BoardDTO boardDTO, Model model)throws Exception {
+		boardDTO = boardDAO.getDetail(boardDTO);
+		
+		model.addAttribute("detail", boardDTO);
+		
+		return "board/detail";
+	}
+	
+	@RequestMapping(value="add.iu", method=RequestMethod.GET)
+	public String add()throws Exception{
+		
+		
+		return "board/add";
+	}
+	
+	@RequestMapping(value="add.iu", method=RequestMethod.POST)
+	public String add(BoardDTO boardDTO)throws Exception{
+		
+		int result = boardDAO.add(boardDTO);
+		
+		return "redirect:./list.iu";
+	}
+	
+	@RequestMapping(value="update.iu", method=RequestMethod.GET)
+	public void update(BoardDTO boardDTO, Model model)throws Exception {
+		model.addAttribute("update", boardDTO);
+		
+	}
+	
+	@RequestMapping(value="update.iu", method=RequestMethod.POST)
+	public String update(HttpServletRequest request, BoardDTO boardDTO)throws Exception {
+		int result = boardDAO.update(boardDTO);
+		
+		return "redirect:./list.iu";
+	}
+	
+	@RequestMapping(value="delete.iu", method=RequestMethod.GET)
+	public String delete(BoardDTO boardDTO)throws Exception{
+		
+		int result = boardDAO.delete(boardDTO);
+		return "redirect:list.iu";
 	}
 
 }

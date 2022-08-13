@@ -17,7 +17,6 @@ public class BankBookController {
 	@RequestMapping(value="delete.iu", method=RequestMethod.GET)
 	public ModelAndView delete(BankBookDTO bankbookDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("딜리트");
 		BankBookDAO bankbookDAO = new BankBookDAO();
 		int result = bankbookDAO.setDelete(bankbookDTO);
 		
@@ -29,8 +28,6 @@ public class BankBookController {
 	
 	@RequestMapping(value="update.iu", method = RequestMethod.GET)
 	public void update(BankBookDTO bankbookDTO, Model model) throws Exception{
-		//BankBookDAO bankbookDAO = new BankBookDAO();
-		System.out.println("업데이트 페이지 실행");
 		BankBookDAO bankbookDAO = new BankBookDAO();
 	
 		bankbookDTO = bankbookDAO.getDetail(bankbookDTO);
