@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.springframework.stereotype.Repository;
+
 import com.iu.start.util.DBConnector;
 
+@Repository
 public class BankmembersDAO implements MembersDAO{
 	
 	public BankmembersDTO getLogin(BankmembersDTO bankmembersDTO) throws Exception{

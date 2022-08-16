@@ -6,6 +6,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,24 @@ import com.iu.start.bankBook.BankBookDTO;
 //이 클래스는 Controller역할, Container에게 이 클래스의 객체를 생성 위임
 public class MemberController {
 	
+	@Autowired
+	private BankmembersService bankmembersService;
+	
+	//DAO 객체주입!! 이제 dao객체생성 개별로 안해도댐
+	
+//	@Autowired
+//	@Qualifier("myDAO")
+//	private BankmembersDAO bankmembersDAO;
+	
+//	@Autowired
+//	public MemberController(BankmembersDAO bankmembersDAO) {
+//		this.bankmembersDAO = bankmembersDAO;
+//	}
+	
+	
+	
+	
+	
 	@RequestMapping(value="search", method = RequestMethod.GET)
 	public void getSearchByID() {
 		System.out.println("search get실행");
@@ -33,19 +53,8 @@ public class MemberController {
 		//ModelAndView mv = new ModelAndView();
 		
 		
-		BankmembersDAO bDAO = new BankmembersDAO();
-		ArrayList<BankmembersDTO> ar = bDAO.getSearchByID(search);
 		
-		/*/db가없어서임시로..지우세용
-		ArrayList<BankmembersDTO> ar = new ArrayList<BankmembersDTO>();
-		BankmembersDTO bankmembersDTO = new BankmembersDTO();
-		bankmembersDTO.setUsername("inhome");
-		bankmembersDTO.setPassword("pwhome");
-		bankmembersDTO.setName("namehome");
-		bankmembersDTO.setEmail("mailhome");
-		bankmembersDTO.setPhone("phonehome");
-		ar.add(bankmembersDTO);
-		*/
+		ArrayList<BankmembersDTO> ar = bankmembersService.getSearchByID(search);
 		
 		model.addAttribute("list", ar);
 		
@@ -71,8 +80,7 @@ public class MemberController {
 	@RequestMapping(value ="login.iu", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, BankmembersDTO bankmembersDTO) throws Exception {
 		System.out.println("login 실행");
-		BankmembersDAO bankmembersDAO = new BankmembersDAO();
-		bankmembersDTO = bankmembersDAO.getLogin(bankmembersDTO);
+		bankmembersDTO = bankmembersService.getLogin(bankmembersDTO);
 		System.out.println(bankmembersDTO);
 		HttpSession session = request.getSession();
 		session.setAttribute("member", bankmembersDTO);
