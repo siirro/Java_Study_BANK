@@ -11,8 +11,13 @@
 </head>
 <body>
 	<h3>글목록 페이지</h3>
-	글번호, 글제목, 작성자, 작성날짜, 조회수
 	
+	<c:if test="${not empty sessionScope.member}">
+	<div>
+	<a href="add.iu">글 작성</a>
+	</div>
+	</c:if>
+	<br>
 	<table border="1">
 		<thead>
 			<tr>
@@ -28,12 +33,12 @@
 		
 		<c:forEach items="${requestScope.list}" var="boarddto">
 			<tr>
-				<td>${pageScope.dto.bookrate}</td>
-				<td><a href="./detail.iu?booknum=${pageScope.dto.booknum}">${pageScope.dto.bookname}</a></td>
-				<td>${pageScope.dto.bookrate}</td>
-				<td>${pageScope.dto.booksale}</td>
+				<td>${boarddto.boardNum}</td>
+				<td><a href="./detail.iu?boardNum=${pageScope.boarddto.boardNum}">${boarddto.boardTitle}</a></td>
+				<td>${boarddto.boardWriter}</td>
+				<td>${boarddto.boardDate}</td>
+				<td>${boarddto.boardHit}</td>
 			</tr>
-		
 		</c:forEach>
 
 		</tbody>

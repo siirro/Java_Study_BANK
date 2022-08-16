@@ -52,6 +52,7 @@ public class BankBookDAO implements BookDAO{
 			ar.add(bankbookDTO);
 		}
 		
+		DBConnector.getClose(rs, st, con);
 		return ar;
 	}
 
