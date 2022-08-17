@@ -122,8 +122,9 @@ public class MemberController {
 //		
 		
 		
-		//int check = bDAO.setJoin(bankmembersDTO);
+		int check = bankmembersService.setJoin(bankmembersDTO);
 		//System.out.println(check==1);
+		System.out.println(check);
 		
 		
 		return "redirect:./login.iu";
