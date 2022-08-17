@@ -7,11 +7,19 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.iu.start.util.DBConnector;
 
 import oracle.jdbc.proxy.annotation.Pre;
 
+
+@Repository
 public class BankBookDAO implements BookDAO{
+	
+	
+	
 
 	//1.bankbook 테이블에 인서트
 	//북넘은 현재시간을 밀리세컨즈로 변환해서입력, 북세일은 1로입력
