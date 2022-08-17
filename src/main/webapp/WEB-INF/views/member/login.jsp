@@ -15,8 +15,8 @@
 		    PW <input type="password" value="PW1" name="password">
 		    <input type="submit" value="로그인">
 		    <input type="reset">
-		    이미지 절대경로
-		        <img src="/images/jssdf.jpg">
+		    <!--  이미지 절대경로
+		        <img src="/images/jssdf.jpg">-->
    		</form>
 	</div>
 	

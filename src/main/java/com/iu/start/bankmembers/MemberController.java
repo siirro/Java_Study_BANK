@@ -95,36 +95,23 @@ public class MemberController {
 	
 	// join /member/join - Get
 	@RequestMapping(value ="join.iu", method = RequestMethod.GET)
-	public void join() {
+	public String join() {
 		System.out.println("Join Get 실행");
-		//return "member/join";
+		return "member/join";
 	}
 	
 	// join - Post
 	@RequestMapping(value ="join.iu", method = RequestMethod.POST)
 	//public String join(HttpServletRequest request) throws Exception {
 	public String join(BankmembersDTO bankmembersDTO) throws Exception {
+		
+		BankmembersDAO bDAO = new BankmembersDAO();
+		int check = bDAO.setJoin(bankmembersDTO);
+		
 		System.out.println("Join Post 실행");
 		//String ID = request.getParameter("id");
 		
-		
-		BankmembersDAO bDAO = new BankmembersDAO();
-		
-		
-		
-//		BankmembersDTO bDTO = new BankmembersDTO();
-//		
-//		bDTO.setUsername(username);
-//		bDTO.setPassword(password);
-//		bDTO.setName(name);
-//		bDTO.setEmail(email);
-//		bDTO.setPhone(phone);
-//		
-		
-		
-		//int check = bDAO.setJoin(bankmembersDTO);
-		//System.out.println(check==1);
-		
+
 		
 		return "redirect:./login.iu";
 	}
