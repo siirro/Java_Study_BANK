@@ -1,0 +1,17 @@
+package com.iu.start.bankmembers;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class BankmembersService {
+	
+	
+	public int setJoin(BankmembersDTO bankMembersDTO) throws Exception;
+	return 
+	
+	//검색어를 입력해서 아이디를 찾을거임 abc 순으로
+	public ArrayList<BankmembersDTO> getSearchByID(String search) throws Exception;
+
+}
