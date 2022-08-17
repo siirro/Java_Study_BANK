@@ -1,6 +1,7 @@
 package com.iu.start.bankmembers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ public class MemberController {
 		System.out.println("search post실행");
 		System.out.println(search);
 		
-		ArrayList<BankmembersDTO> ar = bankmembersService.getSearchByID(search);
+		List<BankmembersDTO> ar = bankmembersService.getSearchByID(search);
 		
 		model.addAttribute("list", ar);
 		
@@ -96,10 +97,8 @@ public class MemberController {
 		System.out.println("Join Post 실행");
 		//String ID = request.getParameter("id");
 
-		
-		//int check = bDAO.setJoin(bankmembersDTO);
-		//System.out.println(check==1);
-		
+		int check = bankmembersService.setJoin(bankmembersDTO);
+
 		
 		return "redirect:./login.iu";
 	}
