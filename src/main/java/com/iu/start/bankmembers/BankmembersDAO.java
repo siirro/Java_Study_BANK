@@ -37,22 +37,22 @@ public class BankmembersDAO implements MembersDAO{
 		
 	}
 
-	public int setJoin(BankmembersDTO bankMembersDTO) throws Exception {
+	public int setJoin(BankmembersDTO bankmembersDTO) throws Exception {
 		
 		Connection con = DBConnector.getConnection();
 		String sql = "INSERT INTO BANKMEMBERS VALUES(?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 
-		st.setString(1, bankMembersDTO.getUsername());
-		st.setString(2, bankMembersDTO.getPassword());
-		st.setString(3, bankMembersDTO.getName());
-		st.setString(4, bankMembersDTO.getEmail());
-		st.setString(5, bankMembersDTO.getPhone());
+		st.setString(1, bankmembersDTO.getUsername());
+		st.setString(2, bankmembersDTO.getPassword());
+		st.setString(3, bankmembersDTO.getName());
+		st.setString(4, bankmembersDTO.getEmail());
+		st.setString(5, bankmembersDTO.getPhone());
 		
 		int result = st.executeUpdate();
 		
 		DBConnector.getClose(st, con);
-		
+		System.out.println(result+"가1이면성공");
 		return result;
 	}
 
