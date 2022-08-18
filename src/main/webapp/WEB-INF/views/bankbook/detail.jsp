@@ -50,6 +50,8 @@ BankBookDTO bankBookDTO = (BankBookDTO)request.getAttribute("detail");
 				<td>${detail.booksale}
 				
 				
+				
+				
 				</td>
 			</tr>
 
